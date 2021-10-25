@@ -9,8 +9,7 @@ using System.Web.Services.Protocols;
 namespace WSCore.Samples
 {
     [WebService(Name = "GreetingService", Namespace = "https://github.com/caifl/wscore")]
-    public class GreetingService
-    {
+    public class GreetingService : WebService {
         public GreetingService()
         {
         }

@@ -57,6 +57,11 @@ namespace System.Web.Services.Protocols {
 
             var services = this.context.RequestServices;
             this.target = services.GetRequiredService(targetType);
+            if (this.target is WebService)
+            {
+                var ws = this.target as WebService;
+                ws.SetContext(this.context);
+            }
         }
 
         internal virtual void DisposeServerInstance() {

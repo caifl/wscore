@@ -8,3 +8,6 @@
 /src/WSCore/obj
 /src/WSCore.Samples/bin/Debug/netcoreapp3.1
 /src/WSCore.Samples/obj
+/src/WSCore.ConsoleApp/bin/Debug/netcoreapp3.1
+/src/WSCore.ConsoleApp/obj
+/src/WSCore.Samples/bin/Release/netcoreapp3.1

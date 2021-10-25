@@ -52,6 +52,7 @@ namespace System.Web
         public virtual IPrincipal User
         {
             get;
+            protected set;
         }
 
         public virtual HttpRequest Request

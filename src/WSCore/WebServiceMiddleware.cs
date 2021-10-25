@@ -8,39 +8,36 @@ namespace WSCore
 {
     class WebServiceMiddleware
     {
-        private readonly Type serviceType;
-        private readonly string path;
         private readonly WebServiceHandlerFactory handlerFactory;
+        private readonly WebServiceContainer container;
         private readonly RequestDelegate next;
 
-        public WebServiceMiddleware(Type serviceType, string path, 
-            RequestDelegate next)
+        public WebServiceMiddleware(WebServiceContainer container, RequestDelegate next)
         {
-            this.serviceType = serviceType ?? throw new ArgumentNullException(nameof(serviceType));
-            this.path = path ?? throw new ArgumentNullException(nameof(path));
             this.handlerFactory = new WebServiceHandlerFactory();
+            this.container = container;
             this.next = next;
         }
 
         public async Task Invoke(HttpContext context)
         {
-            if (context.Request.Path.StartsWithSegments(this.path,
-                StringComparison.OrdinalIgnoreCase))
+            var serviceType = this.container.ResolveType(context.Request);
+            if (serviceType != null)
             {
                 var request = context.Request;
                 var size = (int)request.ContentLength.GetValueOrDefault(1024);
 
                 using (var memoryStream = new MemoryStream(size))
                 {
-                    await request.Body.CopyToAsync(memoryStream);//.ConfigureAwait(false);
+                    await request.Body.CopyToAsync(memoryStream);
 
                     memoryStream.Seek(0, SeekOrigin.Begin);
 
                     context.Request.Body = memoryStream;
 
-                    var httpContext = new HttpContextImpl(context);
+                    var httpContext = new HttpContextImpl(context, this.container);
 
-                    var handler = this.handlerFactory.GetHandler(httpContext, this.serviceType);
+                    var handler = this.handlerFactory.GetHandler(httpContext, serviceType);
                     if (handler is System.Web.IHttpTaskHandler)
                     {
                         await ((System.Web.IHttpTaskHandler)handler).ProcessRequestAsync(httpContext);

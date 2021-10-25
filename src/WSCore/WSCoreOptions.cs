@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Web.Services;
 using System.Web.Services.Configuration;
 using System.Web.Services.Description;
 
@@ -9,7 +10,7 @@ namespace WSCore
     public class WSCoreOptions
     {
         //private readonly Dictionary<Type, string> webServices = new Dictionary<Type, string>();
-        //private readonly List<Type> webServices = new List<Type>();
+        private readonly List<Type> serviceTypes = new List<Type>();
         private readonly List<Type> soapExtensionReflectorTypes = new List<Type>();
 
         public static WSCoreOptions Default
@@ -34,6 +35,11 @@ namespace WSCore
             get => this.soapExtensionReflectorTypes;
         }
 
+        public virtual IReadOnlyCollection<Type> ServiceTypes
+        {
+            get => new List<Type>(this.serviceTypes);
+        }
+
         //public virtual IReadOnlyDictionary<Type, String> WebServices
         //{
         //    get => new Dictionary<Type, String>(this.webServices);
@@ -48,6 +54,11 @@ namespace WSCore
         //        this.soapExtensionReflectorTypes.Add(typeof(TSoapExtensionReflector));
         //    }
         //}
+        public void AddService<TService>()
+            where TService : WebService
+        {
+            this.serviceTypes.Add(typeof(TService));
+        }
 
         //internal void AddWebService<TWebService>(string path = null)
         //    where TWebService : class

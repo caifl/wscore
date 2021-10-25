@@ -11,7 +11,7 @@ namespace System.Web.Services {
     using System.Diagnostics;
     using System.Web;
     using System.ComponentModel;
-    using System.Web.SessionState;
+    //using System.Web.SessionState;
     using System.Web.Services.Protocols;
     using System.Security.Principal;
     using System.Security.Permissions;
@@ -32,13 +32,13 @@ namespace System.Web.Services {
         ///    <para>Gets a
         ///       reference to the application object for the current HTTP request.</para>
         /// </devdoc>
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Description("The ASP.NET application object for the current request.")]
-        public HttpApplicationState Application {
-            [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
-            get {
-                return Context.Application;
-            }
-        }
+        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Description("The ASP.NET application object for the current request.")]
+        //public HttpApplicationState Application {
+        //    [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
+        //    get {
+        //        return Context.Application;
+        //    }
+        //}
 
         /// <include file='doc\WebService.uex' path='docs/doc[@for="WebService.Context"]/*' />
         /// <devdoc>
@@ -64,26 +64,26 @@ namespace System.Web.Services {
         /// <para>Gets a reference to the <see cref='T:System.Web.HttpSessionState'/>
         /// instance for the current request.</para>
         /// </devdoc>
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), WebServicesDescription(Res.WebServiceSession)]
-        public HttpSessionState Session {
-            [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
-            get {
-                return Context.Session;
-            }
-        }
+        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), WebServicesDescription(Res.WebServiceSession)]
+        //public HttpSessionState Session {
+        //    [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
+        //    get {
+        //        return Context.Session;
+        //    }
+        //}
 
         /// <include file='doc\WebService.uex' path='docs/doc[@for="WebService.Server"]/*' />
         /// <devdoc>
         /// <para>Gets a reference to the <see cref='T:System.Web.HttpServerUtility'/>
         /// for the current request.</para>
         /// </devdoc>
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), WebServicesDescription(Res.WebServiceServer)]
-        public HttpServerUtility Server {
-            [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
-            get {
-                return Context.Server;
-            }
-        }       
+        //[Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), WebServicesDescription(Res.WebServiceServer)]
+        //public HttpServerUtility Server {
+        //    [AspNetHostingPermission(SecurityAction.LinkDemand, Level = AspNetHostingPermissionLevel.Minimal)]
+        //    get {
+        //        return Context.Server;
+        //    }
+        //}       
 
         /// <include file='doc\WebService.uex' path='docs/doc[@for="WebService.User"]/*' />
         /// <devdoc>

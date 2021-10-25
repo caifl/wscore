@@ -28,14 +28,12 @@ namespace WSCore.Samples
         {
             services.AddControllers();
 
-            //Register GreetingService.
-            services.AddTransient<GreetingService>();
-
-            //
             services.AddWSCore(options =>
             {
                 options.VirtualPath = "/ws"; //WSDL Path => /ws/GreetingService.asmx?wsdl
                 options.EnabledProtocols = WebServiceProtocols.HttpSoap | WebServiceProtocols.HttpSoap12 | WebServiceProtocols.Documentation;
+                
+                options.AddService<GreetingService>();
                 //options.SoapExtensionReflectorTypes.Add(...);
             });
         }

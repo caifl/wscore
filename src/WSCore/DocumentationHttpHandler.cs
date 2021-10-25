@@ -35,7 +35,7 @@ namespace System.Web.Services
 
         public void ProcessRequest(HttpContext context)
         {
-            var items = context.Request.GetRequiredService(typeof(IEnumerable<WSCore.WebServiceMiddleware>));
+            //var items = context.Request.GetRequiredService(typeof(IEnumerable<WSCore.WebServiceMiddleware2>));
 
             var location = "/ws/index.html?" + this.serviceType.Name;
             var response = context.Response;

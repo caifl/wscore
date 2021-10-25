@@ -12,6 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public static partial class ServiceCollectionExtensions
     {
         private static WSCoreBuilder builder;
+        private readonly static WebServiceContainer container = new WebServiceContainer();
 
         public static IWSCoreBuilder AddWSCore(this IServiceCollection services, Action<WSCoreOptions> optionsAction)
         {
@@ -24,7 +25,7 @@ namespace Microsoft.Extensions.DependencyInjection
             {
                 builder = new WSCoreBuilder(services);
 
-                services.AddSingleton(services);
+                services.AddSingleton(container);
                 services.AddTransient<DocumentationServerProtocol>();
                 services.AddTransient<DiscoveryServerProtocol>();
             }

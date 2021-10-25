@@ -6,4 +6,9 @@
   <PropertyGroup>
     <ActiveDebugProfile>WSCore.Samples</ActiveDebugProfile>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="GreetingService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

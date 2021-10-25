@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Microsoft.AspNetCore.Builder\IWebServicesBuilder.cs" />
     <Compile Remove="System.Configuration\PrivilegedConfigurationManager.cs" />
     <Compile Remove="System.Web.Services\Description\HttpGetProtocolImporter.cs" />
     <Compile Remove="System.Web.Services\Description\HttpPostProtocolImporter.cs" />
@@ -52,8 +53,8 @@
     <Compile Remove="System.Web.Services\Description\WebReferenceOptions.cs" />
     <Compile Remove="System.Web.Services\Protocols\RemoteDebugger.cs" />
     <Compile Remove="System.Web.Services\UnsafeNativeMethods.cs" />
-    <Compile Remove="System.Web.Services\WebService.cs" />
     <Compile Remove="System.Xml.Serialization\XmlCodeExporter.cs" />
+    <Compile Remove="WebServiceEngine.cs" />
     <Compile Remove="WSCoreOptionsBuilder.cs" />
   </ItemGroup>
 

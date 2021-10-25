@@ -19,9 +19,10 @@ namespace Microsoft.AspNetCore.Builder
             }
 
             var services = app.ApplicationServices;
-            var serviceItems = services.GetRequiredService<IServiceCollection>();
-
             var options = services.GetRequiredService<WSCoreOptions>();
+
+            var wsContainer = services.GetRequiredService<WebServiceContainer>();
+            wsContainer.SetOptions(options);
 
             var section = WebServicesSection.Current;
 
@@ -39,44 +40,7 @@ namespace Microsoft.AspNetCore.Builder
                 }
             }
 
-            var enumerator = serviceItems.GetEnumerator();
-
-            var basePath = options.VirtualPath;
-            if (!String.IsNullOrEmpty(options.VirtualPath))
-            {
-                if (!basePath.EndsWith("/"))
-                    basePath = string.Concat(basePath, "/");
-            }
-            else
-            {
-                basePath = "/";
-            }
-
-            var list = new List<Type>();
-            while (enumerator.MoveNext())
-            {
-                var type = enumerator.Current.ServiceType;
-
-                var ws = type.GetCustomAttribute<WebServiceAttribute>();
-                if (ws == null)
-                    continue;
-
-                var name = ws?.Name;
-                if (string.IsNullOrEmpty(name))
-                {
-                    name = type.Name;
-                }
-
-                app.UseMiddleware<WebServiceMiddleware>(type, $"{basePath}{name}.asmx");
-                list.Add(type);
-            }
-
-            app.UseMiddleware<QueryServiceMiddleware>(list.AsReadOnly());
-
-            //app.Map(new Http.PathString(basePath + "services"), () =>
-            //{
-            //});
-
+            app.UseMiddleware<WebServiceMiddleware>(wsContainer);
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapGet("/", async context =>
@@ -84,8 +48,6 @@ namespace Microsoft.AspNetCore.Builder
             //        await context.Response.WriteAsync("Hello World!");
             //    });
             //});
-
-            //app.MapWhen(basePath + "services", )
         }
     }
 }
