@@ -8,15 +8,15 @@ public void ConfigureServices(IServiceCollection services)
 {
     services.AddControllers();
 
-    //Register GreetingService.
-    services.AddTransient<GreetingService>();
-
     //
     services.AddWSCore(options =>
     {
         options.VirtualPath = "/ws"; //WSDL Path => /ws/GreetingService.asmx?wsdl
         options.EnabledProtocols = WebServiceProtocols.HttpSoap | WebServiceProtocols.HttpSoap12 | WebServiceProtocols.Documentation;
         //options.SoapExtensionReflectorTypes.Add(...);
+
+        //register web service types. (or WSCore.WebServiceContainer.Add<TService>() to register in runtime)
+        options.AddService<GreetingService>();
     });
 }
 
