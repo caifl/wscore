@@ -3,3 +3,8 @@
 ################################################################################
 
 /src/.vs/WSCore
+/src/WSCore/.vs/WSCore
+/src/WSCore/bin
+/src/WSCore/obj
+/src/WSCore.Samples/bin/Debug/netcoreapp3.1
+/src/WSCore.Samples/obj

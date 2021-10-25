@@ -1,0 +1,88 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>WSCore</AssemblyName>
+    <RootNamespace>WSCore</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>0.5.0.0</AssemblyVersion>
+    <FileVersion>0.5.0.0</FileVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>WSCore.pfx</AssemblyOriginatorKeyFile>
+    <Version>1.0.3</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Addressing\**" />
+    <Compile Remove="Coordination\**" />
+    <Compile Remove="System.ComponentModel\**" />
+    <Compile Remove="System.Web.Services\Interop\**" />
+    <Compile Remove="WSAtomicTransaction\**" />
+    <EmbeddedResource Remove="Addressing\**" />
+    <EmbeddedResource Remove="Coordination\**" />
+    <EmbeddedResource Remove="System.ComponentModel\**" />
+    <EmbeddedResource Remove="System.Web.Services\Interop\**" />
+    <EmbeddedResource Remove="WSAtomicTransaction\**" />
+    <None Remove="Addressing\**" />
+    <None Remove="Coordination\**" />
+    <None Remove="System.ComponentModel\**" />
+    <None Remove="System.Web.Services\Interop\**" />
+    <None Remove="WSAtomicTransaction\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="System.Configuration\PrivilegedConfigurationManager.cs" />
+    <Compile Remove="System.Web.Services\Description\HttpGetProtocolImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\HttpPostProtocolImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\HttpProtocolImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\MimeAnyImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\MimeFormImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\MimeImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\MimeTextImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\MimeXmlImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\ProtocolImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\ServiceDescriptionImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\Soap12ProtocolImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\SoapExtensionImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\SoapHttpTransportImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\SoapProtocolImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\SoapTransportImporter.cs" />
+    <Compile Remove="System.Web.Services\Description\WebReference.cs" />
+    <Compile Remove="System.Web.Services\Description\WebReferenceCollection.cs" />
+    <Compile Remove="System.Web.Services\Description\WebReferenceOptions.cs" />
+    <Compile Remove="System.Web.Services\Protocols\RemoteDebugger.cs" />
+    <Compile Remove="System.Web.Services\UnsafeNativeMethods.cs" />
+    <Compile Remove="System.Web.Services\WebService.cs" />
+    <Compile Remove="System.Xml.Serialization\XmlCodeExporter.cs" />
+    <Compile Remove="WSCoreOptionsBuilder.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="System.Web.Services\System.Web.Services.resources" />
+    <None Remove="System.Web.Services\System.Web.Services.zh-HANS.resources" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="StringResouces.resources" />
+    <EmbeddedResource Include="StringResouces.zh-HANS.resources" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.0.2" />
+    <PackageReference Include="System.CodeDom" Version="5.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="template.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http: //www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>WebService Test</title>
+    <script>
+        window.wsdlUri = window.location.href + '?wsdl'
+    </script>
+</head>
+<body>
+    <div id="app">
+        <h1 v-for="(item,index) in services" v-key="index">{{item}}</h1>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/webServices/vue/vue.min.js"></script>
+    <script src="/webServices/element-ui.js"></script>
+    <script src="/webServices/app.js"></script>
+</body>
+</html>
